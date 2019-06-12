@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Guitar List</h1>
+
+{% for guitar in guitars %}
+    <div class="card">
+        <a href="{% url 'detail' guitar.id %}">
+            <div class="card-content">
+                <span class="card-title">{{ guitar.model }}</span>
+                <p>Make: {{ guitar.make }}</p>
+                <p>Finish: {{ guitar.finish }}</p>
+                {% if guitar.age > 0 %}
+                    <p>Age: {{ guitar.age }}</p>
+                {% else %}
+                    <p>Age: New</p>
+                {% endif %}
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+{% endblock %}
